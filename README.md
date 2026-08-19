@@ -1,2 +1,3 @@
-# Pers_Site
-Projects / Updates / Info
+# Logan Thomley
+
+Personal site.
