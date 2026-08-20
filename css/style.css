@@ -23,11 +23,17 @@ body {
     color: var(--fg);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 .text-link {
@@ -64,6 +70,21 @@ h1 {
     letter-spacing: -0.4px;
     line-height: 1.2;
     margin-bottom: 0.25rem;
+}
+
+.post header.title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.post header.title-row h1 {
+    margin-bottom: 0;
+}
+
+.post header.title-row .role {
+    flex-shrink: 0;
 }
 
 .role {
@@ -117,6 +138,151 @@ h1 {
     width: auto;
 }
 
+.back {
+    font-family: var(--sans);
+    font-size: 1.65rem;
+    line-height: 1;
+    color: var(--fg);
+    width: 1.4em;
+}
+
+.back:hover {
+    color: #fff;
+}
+
+.out {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.out:hover {
+    color: var(--fg);
+}
+
+.post {
+    max-width: 28rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.post p,
+.project-line {
+    color: #ccc;
+    font-size: 0.8rem;
+    line-height: 1.55;
+}
+
+.post figure {
+    margin: 0;
+}
+
+.post figure img {
+    display: block;
+    width: 100%;
+}
+
+.post figure.lead {
+    overflow: visible;
+}
+
+.clips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.clips .clip {
+    min-width: 0;
+}
+
+.video {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #111;
+}
+
+.post figure .video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1.35rem;
+    height: 1.35rem;
+    background: #000c;
+    border-radius: 50%;
+}
+
+.play::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.28rem 0 0.28rem 0.46rem;
+    border-color: transparent transparent transparent #f0f0f0;
+    transform: translate(-50%, -50%);
+}
+
+.video:hover .play {
+    background: #111;
+}
+
+.post figcaption {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    line-height: 1.4;
+    color: var(--muted);
+    margin-top: 0.4rem;
+}
+
+.post figcaption .text-link {
+    color: var(--muted);
+}
+
+.post h2 {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    margin-top: 0.4rem;
+}
+
+.post .facts {
+    font-size: 0.75rem;
+}
+
+.shot {
+    position: relative;
+    overflow: visible;
+}
+
+.me-arrow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.me-label {
+    fill: #f4f4f4;
+    font-family: var(--mono);
+    font-size: 4.6px;
+}
+
 @media (max-width: 1100px) {
     html {
         font-size: 100%;
@@ -147,19 +313,31 @@ h1 {
     }
 
     .role,
-    .facts {
+    .facts,
+    .post p,
+    .project-line {
         font-size: 0.8rem;
     }
 
-    .contact {
+    .contact,
+    .out {
         font-size: 0.74rem;
+    }
+
+    .post {
+        max-width: 22.5rem;
+        padding: 1.75rem 1.25rem 2.5rem;
+    }
+
+    .clips {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 420px) {
-    .page {
+    .page,
+    .post {
         padding: 1.25rem 1rem 1.75rem;
-        gap: 1.15rem;
     }
 
     h1 {
@@ -168,11 +346,22 @@ h1 {
 
     .role,
     .facts,
-    .contact {
+    .contact,
+    .post p,
+    .project-line {
         font-size: 0.74rem;
+    }
+
+    .post figcaption {
+        font-size: 0.62rem;
     }
 
     .contact a {
         padding: 0.28rem 0;
+    }
+
+    .post header.title-row {
+        flex-wrap: wrap;
+        gap: 0.35rem;
     }
 }
